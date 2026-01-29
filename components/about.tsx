@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Github, Instagram, Linkedin, Youtube } from "lucide-react";
 
 
 import hakcthon1 from "@/images/hakcthon1.png";
@@ -9,10 +10,12 @@ import hackthon3 from "@/images/hackthon3.png";
 
 const languages = [
   "C",
+  "C#",
   "Python",
   "JavaScript",
   "TypeScript",
   "Java",
+  "Rust",
   "Ruby",
   "Lua",
   "Go",
@@ -24,10 +27,26 @@ const languages = [
 ];
 
 const socialLinks = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/zachary-levesque-60500b252/" },
-  { label: "Instagram", href: "https://www.instagram.com/zach_lb1/" },
-  { label: "YouTube", href: "https://www.youtube.com/@shoebot0" },
-  { label: "GitHub", href: "https://github.com/Zackydout101" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/zachary-levesque-60500b252/",
+    icon: Linkedin,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/zach_lb1/",
+    icon: Instagram,
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@shoebot0",
+    icon: Youtube,
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/Zackydout101",
+    icon: Github,
+  },
 ];
 
 type Repo = {
@@ -99,7 +118,7 @@ export function About() {
     const fetchRepos = async () => {
       try {
         const response = await fetch(
-          "https://api.github.com/users/Zackydout101/repos?sort=updated&per_page=6"
+          "https://api.github.com/users/Zackydout101/repos?sort=updated&per_page=5"
         );
         if (!response.ok) {
           throw new Error("GitHub request failed");
@@ -183,22 +202,26 @@ export function About() {
                   Links
                 </h3>
                 <div className="grid gap-3 sm:grid-cols-2">
-                  {socialLinks.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="group rounded-2xl border border-border/60 bg-secondary/30 px-4 py-3 text-sm text-foreground transition-colors hover:bg-secondary/50"
-                    >
-                      <span className="font-medium group-hover:text-accent transition-colors">
-                        {link.label}
-                      </span>
-                      <span className="ml-2 text-xs text-muted-foreground">
-                        ↗
-                      </span>
-                    </a>
-                  ))}
+                  {socialLinks.map((link) => {
+                    const Icon = link.icon;
+                    return (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group flex items-center gap-2 rounded-2xl border border-border/60 bg-secondary/30 px-4 py-3 text-sm text-foreground transition-colors hover:bg-secondary/50"
+                      >
+                        <Icon className="h-4 w-4 text-muted-foreground group-hover:text-accent transition-colors" />
+                        <span className="font-medium group-hover:text-accent transition-colors">
+                          {link.label}
+                        </span>
+                        <span className="ml-2 text-xs text-muted-foreground">
+                          ↗
+                        </span>
+                      </a>
+                    );
+                  })}
                 </div>
                 
               </div>
@@ -237,15 +260,15 @@ export function About() {
                             <p className="text-sm font-medium text-foreground group-hover:text-accent transition-colors">
                               {repo.name}
                             </p>
-                            {repo.readmeIntro ? (
-                              <p className="text-xs text-muted-foreground mt-1">
-                                {repo.readmeIntro}
-                              </p>
-                            ) : repo.description ? (
-                              <p className="text-xs text-muted-foreground mt-1">
-                                {repo.description}
-                              </p>
-                            ) : null}
+                          {repo.readmeIntro ? (
+                            <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
+                              {repo.readmeIntro}
+                            </p>
+                          ) : repo.description ? (
+                            <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
+                              {repo.description}
+                            </p>
+                          ) : null}
                           </div>
                           <span className="text-xs text-muted-foreground">
                             View ↗

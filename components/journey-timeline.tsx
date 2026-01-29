@@ -214,12 +214,10 @@ export function JourneyTimeline({ className }: JourneyTimelineProps) {
 
   return (
     <div id="journey" className={className}>
-      <div className="text-center mb-16">
-       
-      </div>
+      <div className="text-center mb-10" />
 
-      <div className="relative" ref={containerRef}>
-        {/* SVG Connectors */}
+      {/* Desktop flowchart */}
+      <div className="relative hidden md:block" ref={containerRef}>
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none"
           style={{ zIndex: 0, overflow: "visible" }}
@@ -240,7 +238,6 @@ export function JourneyTimeline({ className }: JourneyTimelineProps) {
 
               return (
                 <g key={index}>
-                  {/* Connector line */}
                   <path
                     d={`M ${startX} ${startY} C ${startX} ${midY}, ${endX} ${midY}, ${endX} ${endY}`}
                     fill="none"
@@ -251,7 +248,6 @@ export function JourneyTimeline({ className }: JourneyTimelineProps) {
                       isVisible ? "opacity-60" : "opacity-0"
                     }`}
                   />
-                  {/* Start dot */}
                   <circle
                     cx={startX}
                     cy={startY}
@@ -261,7 +257,6 @@ export function JourneyTimeline({ className }: JourneyTimelineProps) {
                       isVisible ? "opacity-80" : "opacity-0"
                     }`}
                   />
-                  {/* End dot */}
                   <circle
                     cx={endX}
                     cy={endY}
@@ -288,7 +283,6 @@ export function JourneyTimeline({ className }: JourneyTimelineProps) {
           </defs>
         </svg>
 
-        {/* Cards Grid */}
         <div className="relative grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-16">
           {milestones.map((milestone, index) => {
             const isVisible = visibleItems.includes(index);
@@ -357,6 +351,48 @@ export function JourneyTimeline({ className }: JourneyTimelineProps) {
               </div>
             );
           })}
+        </div>
+      </div>
+
+      {/* Mobile stacked timeline */}
+      <div className="relative md:hidden">
+        <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-slate-300/60 via-slate-400/40 to-transparent" />
+        <div className="space-y-6 pl-8">
+          {milestones.map((milestone) => (
+            <div
+              key={`${milestone.year}-${milestone.title}-mobile`}
+              className="relative"
+            >
+              <div className="absolute -left-8 top-6 h-3 w-3 rounded-full bg-slate-300/70" />
+              <div
+                className={`
+                  px-4 py-4 rounded-2xl
+                  bg-gradient-to-br ${milestone.gradient}
+                  border ${milestone.border}
+                  shadow-lg ${milestone.glow}
+                `}
+              >
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h3 className="text-sm font-semibold text-slate-800">
+                    {milestone.title}
+                  </h3>
+                  <span className="text-[11px] font-medium text-slate-500 bg-white/70 px-2 py-0.5 rounded-full">
+                    {milestone.year}
+                  </span>
+                </div>
+                <div className="mt-1 flex items-center gap-2 text-xs text-slate-600">
+                  {milestone.logo ? (
+                    <img
+                      src={milestone.logo.src}
+                      alt={milestone.logo.alt}
+                      className="h-8 w-8 rounded-sm object-contain"
+                    />
+                  ) : null}
+                  <span>{milestone.description}</span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

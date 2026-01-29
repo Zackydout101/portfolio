@@ -18,7 +18,7 @@ const projects = [
       "Reinforcement learning project that trains a Rocket League bot for control, positioning, and decision-making.",
     tags: ["Python", "C", "RL", "Computer Vision","RAG", "LLM", "C++", "ESP-IDF", "Boost.Asio", "Rust", "Unity", "TensorFlow Lite", "CUDA"],
     year: "2025",
-    link: "#",
+    link: "https://github.com/Zackydout101/aicar",
     image: aiRocketLeagueCar.src,
   },
   {
@@ -38,7 +38,7 @@ const projects = [
       "Fast mobile sneaker bot with real-time monitoring, queue handling, and checkout automation.",
     tags: ["iOS", "Android", "Automation", "C#"],
     year: "2024",
-    link: "#",
+    link: "https://www.youtube.com/watch?v=zLU64G3iusM",
     image: spyderforceSneakerBot.src,
   },
   {
@@ -48,7 +48,7 @@ const projects = [
       "Course platform and curriculum teaching sneaker bot development at scale.",
     tags: ["Education", "Web", "Community"],
     year: "2024",
-    link: "#",
+    link: "https://shoebot.gumroad.com/",
     image: shoeBotCourse.src,
   },
 ];

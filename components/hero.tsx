@@ -13,7 +13,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-24 py-20">
+    <section className="relative min-h-[100svh] flex flex-col justify-center px-6 md:px-12 lg:px-24 py-14 sm:py-20">
       {/* Animated background grid */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
@@ -25,7 +25,7 @@ export function Hero() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="relative z-10 mx-auto w-full max-w-6xl grid items-center gap-8 sm:gap-12 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <div
             className={`transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
@@ -36,20 +36,20 @@ export function Hero() {
           </div>
 
           <h1
-            className={`text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-balance mb-8 transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            className={`text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-balance mb-6 sm:mb-8 transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
             Zachary Lévesque
           </h1>
 
           <p
-            className={`text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl leading-relaxed transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            className={`text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl leading-relaxed transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
             <span className="text-foreground italic">Crafting interfaces.</span>{" "}
             Building polished software and web experiences. Experimenting with magical details in user interfaces.
           </p>
 
           <div
-            className={`mt-12 flex flex-wrap gap-6 transition-all duration-700 delay-300 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            className={`mt-8 sm:mt-12 flex flex-wrap gap-6 transition-all duration-700 delay-300 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
             <a
               href="#projects"
@@ -69,9 +69,9 @@ export function Hero() {
         </div>
 
         <div
-          className={`relative mx-auto w-full max-w-sm md:max-w-md lg:max-w-lg transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`relative mx-auto w-full max-w-[220px] sm:max-w-[260px] md:max-w-md lg:max-w-lg transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <div className="relative aspect-square rounded-[2rem] border border-accent/40 bg-card/30 p-3 shadow-[0_0_40px_rgba(90,200,200,0.15)]">
+          <div className="relative aspect-square rounded-[2rem] border border-accent/40 bg-card/30 p-2 sm:p-3 shadow-[0_0_40px_rgba(90,200,200,0.15)]">
             <div className="relative h-full w-full overflow-hidden rounded-[1.6rem] bg-secondary/20">
               <img
                 src="/images/main_image.png"
@@ -172,7 +172,7 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <div 
-        className={`absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-all duration-700 delay-500 ${mounted ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 transition-all duration-700 delay-500 ${mounted ? 'opacity-100' : 'opacity-0'}`}
       >
         <span className="text-xs tracking-widest text-muted-foreground">SCROLL</span>
         <div className="w-px h-12 bg-gradient-to-b from-muted-foreground to-transparent animate-pulse" />
